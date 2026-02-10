@@ -6,6 +6,22 @@
 /*if(!isLevel(1000)){
     header("Location: index.php");
 }*/
+if (isset($_GET['del'])){
+    $id=intval($_GET['del']);
+    $sql="DELETE FROM tbl_user WHERE id=$id";
+    $result=mysqli_query($conn,$sql);
+}
+if(isset($_GET['level'])){
+    $id=intval($_GET['level']);
+    $sql="SELECT userlevel FROM tbl_user WHERE id=$id";
+    $result=mysqli_query($conn, $sql);
+    $row=mysqli_fetch_assoc($result);
+    $initlevel=$row['userlevel'];
+    $newlevel= $initlevel-100;
+    $sql="UPDATE tbl_user SET userlevel=$newlevel WHERE id=$id";
+    $result=mysqli_query($conn, $sql);
+}
+
 ?>
 
 <html lang="en">
@@ -33,15 +49,15 @@
                     </summary>
                     <div class="realname"><?=$row['realname'];?></div>
                     <div class="mail"><a href="mailto:<?=$row['mail'];?>"><?=$row['mail'];?></a></div>
-                    <div>
+                    <div class="userdetails">
                         <div class="id">ID: <?=$row['id'];?></div>
-                        <div class="user">Username: <?=$row['username'];?></div>
-                        <div class="level">Level: <?=$row['userlevel'];?></div>
+                        <div class="user"> Username: <?=$row['username'];?> </div>
+                        <div class="level">&nbsp;&nbsp;Level: <?=$row['userlevel'];?> </div>
                     </div>
                     <div class="last">Last Login: <?=$row['lastlogin']; ?></div>
                     <div class="created">User created: <?=$row['created']; ?></div>
                     <div class="buttons">
-                        <a href="useradmin.php?level=100">Demote</a>
+                        <a href="useradmin.php?level=<?=$row['id'];?>">Demote</a>
                         <a href="useradmin.php?edit=<?=$row['id'];?>">Edit</a>
                         <a href="useradmin.php?del=<?=$row['id'];?>">Purge</a>
                     </div>

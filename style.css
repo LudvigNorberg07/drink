@@ -66,22 +66,34 @@ summary{
     width:100%;
     background: #0003;
     padding:.5rem;
-    & .id{
-        width:40px;
-        font-weight:bold;
-    }
-    & .user{
-        flex-grow: 1;
-    }
-    & .level{
-        font-weight: bold;
-    }
+}
+.id{
+    width:40px;
+    font-weight:bold;
+}
+.user{
+    flex-grow: 1;
+}
+.level{
+    font-weight: bold;
 }
 details{
     background: #0001;
     width:50%;
     margin-left:auto;
     margin-right:auto;
-
-
+}
+.realname{
+    font-size: 130%;
+    font-weight: bold;
+}
+.mail a{
+    font-size: 80%;
+    text-decoration: none;
+}
+details .userdetails{
+    display:flex;
+    & .user{
+        flex-grow:unset;
+    }
 }
