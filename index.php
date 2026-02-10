@@ -14,18 +14,14 @@
     <header>
         <h1>Drinks</h1>
     </header>    
-    <nav>
-        <a href="index.php">Hem</a>
-        <a href="about.php">About</a>
-        <div class="fill"></div>
-        <button popovertarget="login">Login</button>
-    </nav>
+
+<?php require_once("_nav.php");?>
     <main>
 
     </main>
-    <footer>
-        &copy;2026 Ludvig Norberg
-    </footer>
+
+<?php require_once("_footer.php");?>
+
     <dialog id="login" popover>
         <form action="_login.php" method="POST">
             <input type="text" name="user" placeholder="Username" requierd>
