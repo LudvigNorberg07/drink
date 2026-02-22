@@ -1,6 +1,10 @@
 <!DOCTYPE html>
-<?php require_once("asset.php");?>
+<?php require_once("asset.php"); ?>
 <?php
+$mess="";
+if(isset($_SESSION['mess'])){
+    $mess=$_SESSION['mess'];
+}
 
 ?>
 <html lang="en">
@@ -13,19 +17,16 @@
 <body>
     <header>
         <h1>Drinks</h1>
-    </header>    
-
-<?php require_once("_nav.php");?>
+    </header>
+<?php require_once("_nav.php"); ?>
     <main>
-
+<h1><?=$mess;?></h1>
     </main>
-
-<?php require_once("_footer.php");?>
-
+<?php require_once("_footer.php"); ?>
     <dialog id="login" popover>
         <form action="_login.php" method="POST">
-            <input type="text" name="user" placeholder="Username" requierd>
-            <input type="password" name="pass" placeholder="Password" requierd>
+            <input type="text" name="user" placeholder="Username" required>
+            <input type="password" name="pass" placeholder="Password" required>
             <input type="submit" name="btn_login" value="Log in">
         </form>
     </dialog>
