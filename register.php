@@ -27,12 +27,38 @@ if(isset($_POST['btn_reg'])){
             <p>The admin have to approve the user befor you can login. A mail will be sent to th registred email when approved.</p>
     <?php else: ?>    
     <form action="register.php" method="POST">
-        <input type="text" name="username" id="username" placeholder="Preferred username" required>
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" placeholder="Preferred username" required >
+        <label for="realname">Real Name</label>
         <input type="text" name="realname" id="realname" placeholder="Your real name"required>
+        <label for="mail">Email</label>
         <input type="email" name="mail" id="mail" placeholder="Your email adress" required>
-        <input type="password" name="password" id="password" placeholder="Password (min 14 chars)" required>
+        <label for="password">Password</label>
+        <input type="text" name="password" id="password" placeholder="Password (min 14 chars)" required  pattern=".{14,}">
         <input type="submit" name="btn_reg" value="Create user">
     </form>
     <?php endif; ?>
 </body>
 </html>
+<script>
+    //validate if username is taken
+    const username=document.getElementById("username");
+    names=[
+        <?php
+            $sql="SELECT username FROM tbl_user";
+            $result=mysqli_query($conn, $sql);
+            while($row=mysqli_fetch_assoc($result)): ?>
+                "<?=$row['username']?>",
+        <?php endwhile; ?>
+    ]
+    username.addEventListener("input", function(){
+        if(names.includes(username.value)){
+            username.setCustomValidity("Username is already taken");
+            username.reportValidity();
+
+        }else{
+            username.setCustomValidity("");
+            username.reportValidity();
+        }
+    });  
+</script>
