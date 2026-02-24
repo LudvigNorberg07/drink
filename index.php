@@ -36,14 +36,10 @@ if(isset($_SESSION['mess'])){
         <div>Rated: <?=showRating($row['rating'])?></div>   
     </summary>
     <div class="ingredients">
-        <pre>
-            <?=$row['ingredients']?>
-        </pre>
+        <pre><?=$row['ingredients']?></pre>
     </div>
     <div class="recipe">    
-        <pre>
-            <?=$row['recipe']?>
-        </pre>
+        <pre><?=$row['recipe']?></pre>
     </div>
 </details>
 <?php endwhile; ?>

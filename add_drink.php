@@ -6,14 +6,14 @@ if(isset($_SESSION['mess'])){
     $mess=$_SESSION['mess'];
 }
 if(isset($_POST['btnAdd'])){
-    $drink=$_POST['drinkname'];
-    $desc=$_POST['description'];
+    $drink=htmlentities($_POST['drinkname']);
+    $desc=htmlentities($_POST['description']);
     $alc=intval($_POST['alcoholic']);
-    $ingr=$_POST['ingredients'];
-    $rec=$_POST['recipe'];
+    $ingr=htmlentities($_POST['ingredients']);
+    $rec=htmlentities($_POST['recipe']);
     $sql="INSERT INTO tbl_drinks (drinkname, description, ingredients, recipe, alcoholic) VALUES ('$drink', '$desc', '$ingr', '$rec', $alc)";
     $result=mysqli_query($conn, $sql);
-    header("Location index.php");
+    header("Location: index.php");
 }
 
 
