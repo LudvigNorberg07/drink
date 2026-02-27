@@ -11,4 +11,7 @@
         <?php else: ?>
         <a href="_login.php?logout=1">Logout</a>    
         <?php endif; ?>
+        <?php if(!isLevel(5)):?>
+            <a href="register.php">Register</a>
+        <?php endif;?>
     </nav>

@@ -8,7 +8,7 @@ if(isset($_POST['btn_reg'])){
     $username=$_POST['username'];
     $realname=$_POST['realname'];
     $mail=$_POST['mail'];
-    $password=$_POST['password'];
+    $password=md5($_POST['password']);
     $sql="INSERT INTO tbl_user(username, password, realname, mail) VALUES ('$username', '$password', '$realname', '$mail')";
     $result=mysqli_query($conn, $sql);
     header("Location: register.php?reg=aac7d883b45");
@@ -34,7 +34,7 @@ if(isset($_POST['btn_reg'])){
         <label for="mail">Email</label>
         <input type="email" name="mail" id="mail" placeholder="Your email adress" required>
         <label for="password">Password</label>
-        <input type="text" name="password" id="password" placeholder="Password (min 14 chars)" required  pattern=".{14,}">
+        <input type="password" name="password" id="password" placeholder="Password (min 14 chars)" required  pattern=".{14,}">
         <input type="submit" name="btn_reg" value="Create user">
     </form>
     <?php endif; ?>

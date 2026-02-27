@@ -50,4 +50,12 @@ function isAlcoholic($value){
         return "🤓";
     }
 }
+function isSelected($val){
+    $val=boolval($val);
+    if($val){
+        return true;
+    }else{
+        return false;
+    }
+}
 ?>

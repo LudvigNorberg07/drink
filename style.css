@@ -26,24 +26,28 @@ header{
 
 nav{
     display:flex;
+    align-items:center;
     gap:.3rem;
     padding: .3rem 1rem;
-    & .fill{
-        flex-grow: 5;
-    }
     background: var(--clr_back_nav);
-    & a{
-        text-decoration: none;
-        font-weight: bold;
-        color:white;
-        border-radius: .2rem;
-        padding: .2rem .3rem;
-        background: #0003;
-    }
-    & a:hover{
-        background: #0006;
-    }
 }
+nav .fill{
+        flex-grow: 5;
+}
+nav a,nav button{
+    all: unset;
+    font:bold 1rem system-ui;
+    text-decoration: none;
+    font-weight: bold;
+    color:white;
+    border-radius: .2rem;
+    padding: .2rem .3rem;
+    background: #0003;
+}
+nav a:hover, nav button:hover{
+    background: #0006;
+}
+
 main{
     flex-grow: 5;
     display:flex;
