@@ -2,7 +2,7 @@
 require_once("asset.php");
 
 if(isset($_GET['logout'])){
-    $_SESSION['mess']="Logged out!";
+    $_SESSION['mess']="Logg in to add and rate drinks!";
     $_SESSION['name']="";
     $_SESSION['level']="";
     $_SESSION['id']="";

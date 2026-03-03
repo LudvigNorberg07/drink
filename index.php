@@ -23,6 +23,9 @@ if(isset($_SESSION['mess'])){
     <div class="container">
         <div class="info">
             <h1 class="message"><?=$mess;?></h1>
+            <p>Our school project focused on developing a modern and interactive website about drinks, mainly alcoholic beverages such as cocktails, wine, beer, and spirits. The goal was to create a platform where users could explore different drinks, learn about their ingredients, and share their opinions. We began by planning the structure and categories of the site, then designed the layout using HTML and CSS to create a clean and user-friendly interface. JavaScript was implemented to add interactive features.
+
+The website is simple to use. Users can browse drinks by category or search for specific ones. Each drink has its own page with a description and ingredients list. Visitors can also rate drinks using a rating system and leave feedback. Additionally, users can add new drinks through a submission form by entering the name, ingredients, and a short description. This made the website both informative and interactive.</p>
             <?php if(isLevel(10)): ?>
                 <a href="add_drink.php" class="addDrink">Add new drink!</a>
             <?php endif; ?>
@@ -38,7 +41,8 @@ if(isset($_SESSION['mess'])){
                     <div><h2><?=$row['drinkname']?>&nbsp;&nbsp;<span><?=isAlcoholic(intval($row['alcoholic']))?></span></h2>
                     <h4><?=$row['description']?></h4></div> 
                     <div class="filler"></div>  
-                    <div>Rated: <?=showRating($row['rating'])?></div>   
+                    <div>Rated: <?=showRating($row['rating'])?>
+                    </div>   
                 </summary>
                 <div class="ingredients">
                     <pre><?=$row['ingredients']?></pre>
@@ -46,7 +50,18 @@ if(isset($_SESSION['mess'])){
                 <div class="recipe">    
                     <pre><?=$row['recipe']?></pre>
                 </div>
-            </details>
+                <div class="rating">
+                    <pre>Your rating: 
+                        <form action="index.php" method="POST" id="ratingForm">
+                            <button type="submit" name="rating" value="1" class="olive">🫒</button>
+                            <button type="submit" name="rating" value="2" class="olive">🫒</button>
+                            <button type="submit" name="rating" value="3" class="olive">🫒</button>
+                            <button type="submit" name="rating" value="4" class="olive">🫒</button>
+                            <button type="submit" name="rating" value="5" class="olive">🫒</button>
+                        </form>
+                    </pre>
+                </div>
+            </details> 
             <?php endwhile; ?>
         </div>
     </div>
