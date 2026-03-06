@@ -31,7 +31,7 @@ if(isset($_POST['btnAdd'])){
     </header>
 <?php require_once("_nav.php"); ?>
     <main>
-        <form action="add_drink.php" method="POST">
+        <form action="add_drink.php" method="POST" class="addForm">
             <label for="descripiton">What is the name of the drink?</label>
             <input type="text" name="drinkname">
             <label for="drinkname">Describe the drink in a few words</label>

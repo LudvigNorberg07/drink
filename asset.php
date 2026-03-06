@@ -47,7 +47,7 @@ function isAlcoholic($value){
     if($value){
         return "😎🍹";
     }else{
-        return "🤓";
+        return "🤓🥤";
     }
 }
 function isSelected($val){

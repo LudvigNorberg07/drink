@@ -41,25 +41,25 @@ The website is simple to use. Users can browse drinks by category or search for 
                     <div><h2><?=$row['drinkname']?>&nbsp;&nbsp;<span><?=isAlcoholic(intval($row['alcoholic']))?></span></h2>
                     <h4><?=$row['description']?></h4></div> 
                     <div class="filler"></div>  
-                    <div>Rated: <?=showRating($row['rating'])?>
-                    </div>   
+            
+                    <div class="ratingDiv">
+                        Rated: <?=showRating($row['rating'])?>
+
+                        <div id="yourRating">
+                            Your rating:
+                            <a href="rating.php?rating=1&drinkID=<?=$row['id']?>" class="olive">🫒</a>
+                            <a href="rating.php?rating=2&drinkID=<?=$row['id']?>" class="olive">🫒</a>
+                            <a href="rating.php?rating=3&drinkID=<?=$row['id']?>" class="olive">🫒</a>
+                            <a href="rating.php?rating=4&drinkID=<?=$row['id']?>" class="olive">🫒</a>
+                            <a href="rating.php?rating=5&drinkID=<?=$row['id']?>" class="olive">🫒</a>
+                        </div>  
+                    </div>
                 </summary>
                 <div class="ingredients">
                     <pre><?=$row['ingredients']?></pre>
                 </div>
                 <div class="recipe">    
                     <pre><?=$row['recipe']?></pre>
-                </div>
-                <div class="rating">
-                    <pre>Your rating: 
-                        <form action="index.php" method="POST" id="ratingForm">
-                            <button type="submit" name="rating" value="1" class="olive">🫒</button>
-                            <button type="submit" name="rating" value="2" class="olive">🫒</button>
-                            <button type="submit" name="rating" value="3" class="olive">🫒</button>
-                            <button type="submit" name="rating" value="4" class="olive">🫒</button>
-                            <button type="submit" name="rating" value="5" class="olive">🫒</button>
-                        </form>
-                    </pre>
                 </div>
             </details> 
             <?php endwhile; ?>
@@ -68,7 +68,7 @@ The website is simple to use. Users can browse drinks by category or search for 
     </main>
 <?php require_once("_footer.php"); ?>
     <dialog id="login" popover>
-        <form action="_login.php" method="POST">
+        <form action="_login.php" method="POST" class="addForm">
             <label for="user">Username</label>
             <input type="text" name="user" placeholder="Username" required>
             <label for="pass">Password</label>
@@ -76,5 +76,6 @@ The website is simple to use. Users can browse drinks by category or search for 
             <input type="submit" name="btn_login" value="Log in">
         </form>
     </dialog>
+    <script src="java.js"></script>
 </body>
 </html>

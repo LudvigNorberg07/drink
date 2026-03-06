@@ -46,7 +46,7 @@ if(isset($_POST['btn_edit'])){
                 $row=mysqli_fetch_assoc($result);
 
             ?>
-        <form action="drinkadmin.php" method="POST">
+        <form action="drinkadmin.php" method="POST" class="addForm">
             <input type="hidden" name="id" value="<?=$id?>">
             <div class="user_data"><?=$id?>&nbsp;&nbsp;<?=$row['drinkname']?><br><?=$row['description']?><br><?=$row['rating']?></div>
             <label for="drinkname">Drink name:</label>

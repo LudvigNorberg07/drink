@@ -57,7 +57,7 @@ if(isset($_POST['btn_edit'])){
                 $user_data=mysqli_fetch_assoc($result);
 
             ?>
-        <form action="useradmin.php" method="POST">
+        <form action="useradmin.php" method="POST" class="addForm">
             <input type="hidden" name="id" value="<?=$id?>">
             <input type="hidden" name="username" value="<?=$user_data['username']?>">
             <input type="hidden" name="password" value="<?=$user_data['password']?>">

@@ -175,7 +175,7 @@ details .buttons{
     --formlabelcolor: rgb(0, 0, 0, .6)
 }
 
-form {
+.addForm {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -239,8 +239,24 @@ a.addDrink{
         color:#fff;
     }
 }
-#ratingform{
-    all: unset;
+#ratingForm{
     display:flex;
-    flex-direction:row;
+    padding:0;
+}
+.olive{
+    filter: grayscale(100%);
+    cursor: pointer;
+    border:none; 
+    background: none;
+    font-size:1rem;
+}
+.ratingDiv{
+    width:fit-content;
+    gap:0rem;
+}
+.ratingDiv a{
+    text-decoration:none;
+}
+.olive.active{
+    filter: grayscale(0%);
 }
