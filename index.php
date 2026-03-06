@@ -45,13 +45,13 @@ The website is simple to use. Users can browse drinks by category or search for 
                     <div class="ratingDiv">
                         Rated: <?=showRating($row['rating'])?>
 
-                        <div id="yourRating">
-                            Your rating:
-                            <a href="rating.php?rating=1&drinkID=<?=$row['id']?>" class="olive">🫒</a>
-                            <a href="rating.php?rating=2&drinkID=<?=$row['id']?>" class="olive">🫒</a>
-                            <a href="rating.php?rating=3&drinkID=<?=$row['id']?>" class="olive">🫒</a>
-                            <a href="rating.php?rating=4&drinkID=<?=$row['id']?>" class="olive">🫒</a>
+                        <div class="yourRating">
                             <a href="rating.php?rating=5&drinkID=<?=$row['id']?>" class="olive">🫒</a>
+                            <a href="rating.php?rating=4&drinkID=<?=$row['id']?>" class="olive">🫒</a>
+                            <a href="rating.php?rating=3&drinkID=<?=$row['id']?>" class="olive">🫒</a>
+                            <a href="rating.php?rating=2&drinkID=<?=$row['id']?>" class="olive">🫒</a>
+                            <a href="rating.php?rating=1&drinkID=<?=$row['id']?>" class="olive">🫒</a>
+                            Your rating:
                         </div>  
                     </div>
                 </summary>

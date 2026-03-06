@@ -38,8 +38,12 @@ function isUserTaken($username){
 function showRating($number){
     $number=intval(round($number));
     $retStr="";
-    for($vdo=0;$vdo<$number;$vdo++){
-        $retStr.="🫒";
+    for($vdo=1;$vdo<=5;$vdo++){
+        if($vdo<=$number){
+            $retStr .= "<span class='olive'>🫒</span>";
+        }else{
+            $retStr .= "<span class='olive grey'>🫒</span>";
+        }
     }
     return $retStr;
 }
