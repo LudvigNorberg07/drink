@@ -32,10 +32,20 @@ The website is simple to use. Users can browse drinks by category or search for 
         </div>
         <div class="drinks">
             <?php
-                $sql="SELECT * FROM tbl_drinks ORDER BY rating DESC";
-                $result=mysqli_query($conn,$sql);
+                $sql = "
+                SELECT
+                    d.*,
+                    COALESCE(AVG(r.rating), 0) AS avg_rating
+                FROM tbl_drinks d
+                LEFT JOIN tbl_ratings r ON d.id = r.drinkID
+                GROUP BY d.id
+                ORDER BY avg_rating DESC, d.drinkname ASC
+                ";
+                $result = mysqli_query($conn, $sql);
             ?>
             <?php while($row=mysqli_fetch_assoc($result)): ?>
+               <?php 
+                ?> 
             <details>
                 <summary>
                     <div><h2><?=$row['drinkname']?>&nbsp;&nbsp;<span><?=isAlcoholic(intval($row['alcoholic']))?></span></h2>
@@ -43,7 +53,7 @@ The website is simple to use. Users can browse drinks by category or search for 
                     <div class="filler"></div>  
             
                     <div class="ratingDiv">
-                        Rated: <?=showRating($row['id']);?>
+                        Rated: <?=showRating($row['avg_rating']);?>
 
                         <div class="yourRating">
                             <a href="rating.php?rating=5&drinkID=<?=$row['id']?>" class="olive">🫒</a>

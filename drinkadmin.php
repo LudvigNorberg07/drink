@@ -8,6 +8,8 @@ if(isset($_GET['del'])){
     $id=intval($_GET['del']);
     $sql="DELETE FROM tbl_drinks WHERE id=$id";
     $result=mysqli_query($conn, $sql);
+    $sql="DELETE FROM tbl_ratings WHERE drinkID=$id";
+    $result=mysqli_query($conn, $sql);
     header("Location: drinkadmin.php");
 }
 if(isset($_POST['btn_edit'])){
