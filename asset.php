@@ -35,8 +35,36 @@ function isUserTaken($username){
         return false;
     }
 }
-function showRating($number){
-    $number=intval(round($number));
+function showRating($drinkID){
+    $db_host="localhost";
+    $db_user="root";
+    $db_pass="";
+    $db_name="drink";
+    $conn=mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+    $sql="SELECT avg(rating) FROM tbl_ratings WHERE drinkID=$drinkID";
+    $result=mysqli_query($conn,$sql);
+    $row=mysqli_fetch_assoc($result);
+    $number=$row['avg(rating)'];
+
+    if($row){
+        $retStr="";
+        for($vdo=1;$vdo<=5;$vdo++){
+            if($vdo<=$number){
+                $retStr .= "<span class='olive'>🫒</span>";
+            }else{
+                $retStr .= "<span class='olive grey'>🫒</span>";
+            }
+        }
+        return $retStr;
+    }else{
+        $retStr="";
+        for($vdo=1;$vdo<=5;$vdo++){
+            $retStr .= "<span class='olive grey'>🫒</span>";
+        }
+    }
+
+
+    $number=intval(round($result));
     $retStr="";
     for($vdo=1;$vdo<=5;$vdo++){
         if($vdo<=$number){
