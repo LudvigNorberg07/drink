@@ -245,11 +245,10 @@ a.addDrink{
 }
 .yourRating a{
     text-decoration: none;
-    filter: grayscale(100%);
 }
 .yourRating a:hover, .yourRating a:hover ~ a{
     text-shadow: 0 0 5px red;
-    filter:grayscale(0%);
+    filter: grayscale(0%);
 }
 .grey{
     filter: grayscale(100%);

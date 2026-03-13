@@ -38,6 +38,7 @@ function isUserTaken($username){
 }
 function showRating($number){
     $number = floatval($number);
+    $number = intval(round($number));
     $retStr="";
     for($vdo=1;$vdo<=5;$vdo++){
         if($vdo<=$number){
@@ -66,6 +67,19 @@ function isSelected($val){
 function rateDrink($val, $drinkID){
     if(mysqli_num_rows($result)==1){
         $row=mysqli_fetch_assoc($result);
-    }
-}
+    };
+};
+function oliveColor($rating,$drinkid){
+    if(isset($_SESSION['id'])){
+        $retStr = "";
+        for($i=5;$i>0;$i--){
+            if($i > $rating){
+                $retStr .= "<a href='rating.php?rating=".$i."&drinkID=".$drinkid."'><span class='olive grey'>🫒</span></a>" ;
+            }else{
+                $retStr .= "<a href='rating.php?rating=".$i."&drinkID=".$drinkid."'><span class='olive'>🫒</span></a>";
+            };
+        };
+        return $retStr;
+    };
+};
 ?>

@@ -54,14 +54,21 @@ The website is simple to use. Users can browse drinks by category or search for 
             
                     <div class="ratingDiv">
                         Rated: <?=showRating($row['avg_rating']);?>
-
                         <div class="yourRating">
-                            <a href="rating.php?rating=5&drinkID=<?=$row['id']?>" class="olive">🫒</a>
-                            <a href="rating.php?rating=4&drinkID=<?=$row['id']?>" class="olive">🫒</a>
-                            <a href="rating.php?rating=3&drinkID=<?=$row['id']?>" class="olive">🫒</a>
-                            <a href="rating.php?rating=2&drinkID=<?=$row['id']?>" class="olive">🫒</a>
-                            <a href="rating.php?rating=1&drinkID=<?=$row['id']?>" class="olive">🫒</a>
-                            Your rating:
+                            <?php
+                            if(isLevel(10)):
+                                $drinkid=intval($row['id']);
+                                $userid=intval($_SESSION['id']);
+                                $sql="SELECT rating FROM tbl_ratings WHERE ((drinkID=$drinkid) AND (userID=$userid))";
+                                $ratingresult=mysqli_query($conn, $sql);
+                                if(mysqli_num_rows($ratingresult)===1){
+                                    $ratingrow=mysqli_fetch_assoc($ratingresult);
+                                    echo oliveColor($ratingrow['rating'], $drinkid);
+                                }else{
+                                    echo oliveColor(0, $drinkid);
+                                }?>
+                                Your rating:
+                            <?php endif; ?>
                         </div>  
                     </div>
                 </summary>
